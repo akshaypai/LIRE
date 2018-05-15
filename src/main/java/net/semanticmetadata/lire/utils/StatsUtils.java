@@ -82,4 +82,35 @@ public class StatsUtils {
 //        System.out.println();
         return set;
     }
+
+    /**
+     * Simple clamp function for floats.
+     * @param val
+     * @param min
+     * @param max
+     * @return
+     */
+    public static float clamp(float val, float min, float max) {
+        return Math.max(min, Math.min(max, val));
+    }
+
+    /**
+     * Simple clamp function for doubles.
+     * @param val
+     * @param min
+     * @param max
+     * @return
+     */
+    public static double clamp(double val, double min, double max) {
+        return Math.max(min, Math.min(max, val));
+    }
+
+    public static String convertTime(long time) {
+        double h = time / 3600000.0;
+        double m = (h - Math.floor(h)) * 60.0;
+        double s = (m - Math.floor(m)) * 60;
+
+//        return String.format("%02d:%02d:%02d", hour, minutes, seconds);
+        return String.format("%s%02d:%02d", (((int) h > 0) ? String.format("%02d:", (int) h) : ""), (int) m, (int) s);
+    }
 }
